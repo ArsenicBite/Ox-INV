@@ -4,17 +4,30 @@ return {
 		weight = 500,
 		client = {
 			image = 'pet_rock.png'
-		}
+		},
 		buttons = {
-			
-			label = 'Name rock',
-			action = function(slot)
-			--Will open an input promt for the player to name the rock
-				local playerInput = exports.ox_lib:Prompt('What are you naming the rock', '')
+			{
+				label = 'Name rock',
+				action = function(slot)
+					--Will open an input promt for the player to name the rock
+					local input = lib.inputDialog('What are you naming the rock?', {
+						{ type = 'input', label = 'Pet Rock Name', placeholder = 'Rock', required = true }
+					})
 
-			--change data on input and checks to see if data has been inputted
-			if playerInput and playerInput ~= ''
-			},
+					--change data on input and checks to see if data has been inputted
+					if input and input[1] and input[1] ~= '' then
+						local metadata = slot.metadata or {}
+						metadata.name = input[1]
+
+						--Changes the name of the object on the singular object by changing the meta data
+						exports.ox_inventory:SetMetadata(slot.slot, metadata)
+						lib.notify({ title = 'PetRock', description = 'Rock named ' .. input[1], type = 'success' })
+					else
+						lib.notify({ title = 'PetRock', description = 'Rock name was not entered', type = 'error' })
+					end
+				end
+			}	
+		},
 	},
 
 	['testburger'] = {
