@@ -1,4 +1,16 @@
-
+return {
+	['poison'] = {
+		label = 'Poison',
+		weight = 500,
+		client = {
+			image = 'poison_bottle.png'
+			status = { hunger = -30000, thirst = -30000 },
+			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
+			prop = { model = `p_cs_script_bottle_s`, pos = vec3(0.01, 0.0, -0.07), rot = vec3(1.0, 1.0, -1.5) },
+			usetime = 1500,
+			notification = ("You don't feel too good..")
+		}
+	},
 
 	['testburger'] = {
 		label = 'Test Burger',
