@@ -1,15 +1,20 @@
 return {
-	['poison'] = {
-		label = 'Poison',
+	['prock'] = {
+		label = 'PetRock',
 		weight = 500,
 		client = {
-			image = 'poison_bottle.png'
-			status = { hunger = -30000, thirst = -30000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `p_cs_script_bottle_s`, pos = vec3(0.01, 0.0, -0.07), rot = vec3(1.0, 1.0, -1.5) },
-			usetime = 1500,
-			notification = ("You don't feel too good..")
+			image = 'pet_rock.png'
 		}
+		buttons = {
+			
+			label = 'Name rock',
+			action = function(slot)
+			--Will open an input promt for the player to name the rock
+				local playerInput = exports.ox_lib:Prompt('What are you naming the rock', '')
+
+			--change data on input and checks to see if data has been inputted
+			if playerInput and playerInput ~= ''
+			},
 	},
 
 	['testburger'] = {
